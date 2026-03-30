@@ -49,10 +49,26 @@ public class Main {
                 System.out.println("Invalid grade input. Please enter a numeric value.");
             }
 
+            // Create Department and add entities
+            Department dept = new Department("Computer Science");
+            dept.addStudent(s1);
+            dept.addProfessor(p1);
+            dept.addCourse(c1);
+
             // Display details
+            System.out.println("\n=== Current Department Info ===");
             s1.displayDetails();
             p1.displayDetails();
             c1.getCourseInfo();
+            dept.displayDepartmentInfo();
+
+            // Save students to file
+            dept.saveStudentsToFile("students.txt");
+
+            // Reload students from file
+            System.out.println("\n=== Reloading Students from File ===");
+            dept.loadStudentsFromFile("students.txt");
+            dept.displayDepartmentInfo();
 
         } catch (Exception e) {
             System.out.println("An unexpected error occurred: " + e.getMessage());
